@@ -1,0 +1,59 @@
+extends layout
+
+block content
+    .col-md-12    
+        form.form-horizontal(action="login" method="post")
+          fieldset
+            // Form Name
+            legend Signup
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='username') User Name
+              .col-md-6
+                input#userName.form-control.input-md(name='userName', placeholder='User Name', required='', type='text')
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='name') Name
+              .col-md-6
+                input#name.form-control.input-md(name='name', placeholder='name', required='', type='text')
+            // Password input
+            .form-group
+              label.col-md-4.control-label(for='password') Password
+              .col-md-6
+                input#password.form-control.input-md(name='password', placeholder='password', required='', type='text')
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='age') Date of Birth
+              .col-md-6
+                input#age.form-control.input-md(name='age', placeholder='Date of Birth (01/01/1983)', required='', type='text')
+            // Multiple Radios
+            .form-group
+              label.col-md-4.control-label(for='gender') Gender
+              .col-md-4
+                .radio
+                  label(for='gender-0')
+                    input#gender-0(name='gender', value='1', checked='checked', type='radio')
+                    |       Female
+                .radio
+                  label(for='gender-1')
+                    input#gender-1(name='gender', value='2', type='radio')
+                    |       Male
+                .radio
+                  label(for='gender-2')
+                    input#gender-2(name='gender', value='3', type='radio')
+                    |       Other
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='location') Location
+              .col-md-6
+                input#location.form-control.input-md(name='location', placeholder='Location', required='', type='text')
+            // Textarea
+            .form-group
+              label.col-md-4.control-label(for='about') About
+              .col-md-4
+                textarea#about.form-control(name='about')
+            // Button
+            .form-group
+              label.col-md-4.control-label(for='submit')
+              .col-md-4
+                input#submit.btn.btn-primary(name='submit' type="submit" value="Submit")

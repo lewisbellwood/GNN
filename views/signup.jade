@@ -1,0 +1,68 @@
+extends layout
+
+block content
+
+form.form-horizontal
+    fieldset
+        // Form Name
+        legend Sign Up
+        // Text input
+        .control-group
+          label.control-label(for='user-name') User Name
+          |   
+          .controls
+            input#user-name.input-xlarge(name='user-name', placeholder='User Name', required='', type='text')
+        // Password input
+        .control-group
+          label.control-label(for='password') Password
+          |   
+          .controls
+            input#password.input-xlarge(name='password', placeholder='Password', type='password')
+        // Text input
+        .control-group
+          label.control-label(for='Name') name
+          |   
+          .controls
+            input#Name.input-xlarge(name='Name', placeholder='Name', required='', type='text')
+        // Text input
+        .control-group
+          label.control-label(for='age') Age
+          |   
+          .controls
+            input#age.input-xlarge(name='age', placeholder='Age', required='', type='text')
+        // Multiple Radios
+        .control-group
+          label.control-label(for='gender') Gender
+          |   
+          .controls
+            label.radio(for='gender-0')
+              input#gender-0(name='gender', value='Male', checked='checked', type='radio')
+              |       Male
+            |     
+            label.radio(for='gender-1')
+              input#gender-1(name='gender', value='Female', type='radio')
+              |       Female
+            |     
+            label.radio(for='gender-2')
+              input#gender-2(name='gender', value='Other', type='radio')
+              |       Other
+        // Text input
+        .control-group
+          label.control-label(for='location') Location
+          |   
+          .controls
+            input#location.input-xlarge(name='location', placeholder='Location', required='', type='text')
+        // Textarea
+        .control-group
+          label.control-label(for='about ') About 
+          |   
+          .controls
+            textarea#about (name='about ') About
+        // Multiple Checkboxes (inline)
+        .control-group
+          label.control-label(for='terms-conditions') Terms &amp; Conditions
+          |   
+          .controls
+            label.checkbox.inline(for='terms-conditions-0')
+              input#terms-conditions-0(name='terms-conditions', value='I agree to the Terms and conditions', type='checkbox')
+              |       I agree to the Terms and conditions
