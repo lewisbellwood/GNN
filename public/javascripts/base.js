@@ -1,6 +1,6 @@
-var app = angular.module('myApp', []);
+var signup = angular.module('myApp', []);
 
-app.controller('FormCtrl', function($scope, $http) {
+signup.controller('FormCtrl', function($scope, $http) {
 
     var formData = {
         username: 'misha',
