@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 
+var fs = require('fs')
 // Pull in Data base Credentials
 var db = require('./db')
 
@@ -44,6 +45,8 @@ router.get('/latest_article', function(req, res, next) {
 
 
 
+
+
 // Posts to data base
 
 // send login form
@@ -59,16 +62,25 @@ router.post('/postArticle', function(req, res) {
     var userName = req.body.userName;
     var html = 'Hello: ' + userName + '.<br>' + '<a href="/">Try again.</a>';
     var data = req.body;
+
+
+
+    fs.writeFile("asfdsf.txt", req.body.mainImage[0], function(err, data) {
+        if (err) {
+            return console.log(err);
+        }
+
+    });
     db.addArticle(data)
     res.send(html);
 });
 
 
-router.get('/latestArticle', function(req, res) {   
-    var render = function(renderdata){
+router.get('/latestArticle', function(req, res) {
+    var render = function(renderdata) {
         res.send(renderdata);
-    } 
-    db.latestArticle(render);    
+    }
+    db.latestArticle(render);
 });
 
 
