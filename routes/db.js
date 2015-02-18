@@ -13,13 +13,15 @@ var data = [{
     location: 'london',
     about: 'I am the first user of gnn'
 }];
+
+console.log(data)
 MongoClient.connect(MONGOHQ_URL, function(err, db) {
 
     collection = db.collection('users');
 
 })
 
-function removeUser() {
+ exports.removeUser = function (){
 
     collection.remove(function(err, result) {
         if (err) {
@@ -29,7 +31,9 @@ function removeUser() {
     })
 }
 
-function addUser(data) {
+ exports.addUser = function (data) {
+
+    console.log(data)
 
     collection.insert(data, function(err,
         docs) {
@@ -43,7 +47,7 @@ function addUser(data) {
 
 }
 
-function searchUser() {
+ exports.searchUser = function () {
 
     collection.find({}).toArray(function(err, docs) {
         if (err) {
