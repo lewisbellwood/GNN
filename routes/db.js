@@ -3,7 +3,8 @@ var mongodb = require('mongodb'),
 
 var MONGOHQ_URL = "mongodb://gnn:Psycle123@ds033601.mongolab.com:33601/gnn"
 
-var collection;
+var users;
+var article;
 var data = [{
     username: 'misha',
     name: 'Misha Davinpour',
@@ -14,14 +15,18 @@ var data = [{
     about: 'I am the first user of gnn'
 }];
 
-console.log(data)
+
+
 MongoClient.connect(MONGOHQ_URL, function(err, db) {
 
-    collection = db.collection('users');
+    users = db.collection('users');
+    articles = db.collection('articles');
+
 
 })
 
- exports.removeUser = function (){
+
+exports.removeUser = function() {
 
     collection.remove(function(err, result) {
         if (err) {
@@ -31,11 +36,19 @@ MongoClient.connect(MONGOHQ_URL, function(err, db) {
     })
 }
 
- exports.addUser = function (data) {
+exports.addUser = function(data) {
+    users.insert(data, function(err,
+        docs) {
+        if (err) {
+            return console.error(err)
+        }
+        console.log('just inserted ', docs.length, ' new documents!')
+    })
 
-    console.log(data)
+}
 
-    collection.insert(data, function(err,
+exports.addArticle = function(data) {
+    articles.insert(data, function(err,
         docs) {
         if (err) {
             return console.error(err)
@@ -43,11 +56,20 @@ MongoClient.connect(MONGOHQ_URL, function(err, db) {
         console.log('just inserted ', docs.length, ' new documents!')
 
     })
+}
+
+exports.latestArticle = function(renderer) {
+
+
+    articles.find().toArray(function(err, articles) {
+
+        renderer(articles)
+    });
 
 
 }
 
- exports.searchUser = function () {
+exports.searchUser = function() {
 
     collection.find({}).toArray(function(err, docs) {
         if (err) {

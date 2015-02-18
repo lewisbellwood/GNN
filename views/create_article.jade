@@ -3,7 +3,53 @@
 extends layout
 
 block content
-    
+    app.col-md-12(ng-app='createArticle')
+        form.form-horizontal(ng-controller='createArticleCtrl', ng-submit='submitForm()')
+          fieldset
+            // Form Name
+            legend Form Name
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='title') Title
+              .col-md-4
+                input#title.form-control.input-md(name='title',ng-model='form.title', placeholder='title', required='', type='text')
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='location') Location
+              .col-md-4
+                input#location.form-control.input-md(name='location', ng-model='form.location', placeholder='location', type='text')
+            // Textarea
+            .form-group
+              label.col-md-4.control-label(for='articlebody') Article Body
+              .col-md-4
+                textarea#articlebody.form-control(name='articlebody', ng-model='form.articlebody')
+            // Select Basic
+            .form-group
+              label.col-md-4.control-label(for='catagory ') Catagory
+              .col-md-4
+                select#catagory .form-control(name='catagory')
+                  option(value='1', ng-model='form.catagory') Politics
+                  option(value='2', ng-model='form.catagory') Enviromental
+                  option(value='3', ng-model='form.catagory') Eduction
+                  option(value='4', ng-model='form.catagory') Health
+                  option(value='5', ng-model='form.catagory') Technology
+            // File Button
+            .form-group
+              label.col-md-4.control-label(for='mainImage') Main Image
+              .col-md-4
+                input#mainImage.input-file(name='mainImage', ng-model='form.mainImage', type='file')
+            // Text input
+            .form-group
+              label.col-md-4.control-label(for='tags') Tags
+              .col-md-4
+                input#tags.form-control.input-md(name='tags', ng-model='form.tags', placeholder='tags', required='', type='text')
+                span.help-block comma seperate tags
+            // Button
+            .form-group
+              label.col-md-4.control-label(for='submit') Submit
+              .col-md-4
+                button#submit.btn.btn-primary(name='submit', ngclick='Submit') Submit
 
-    
+
+        
 

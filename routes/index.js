@@ -1,6 +1,3 @@
-
-
-
 var express = require('express');
 var router = express.Router();
 
@@ -39,17 +36,39 @@ router.get('/login', function(req, res, next) {
     });
 });
 
+router.get('/latest_article', function(req, res, next) {
+    res.render('latest_article', {
+        title: 'latest_article'
+    });
+});
+
 
 
 // Posts to data base
 
 // send login form
-router.post('/postsignup', function(req, res) {
+router.post('/postSignup', function(req, res) {
     var userName = req.body.userName;
     var html = 'Hello: ' + userName + '.<br>' + '<a href="/">Try again.</a>';
     var data = req.body;
     db.addUser(data)
     res.send(html);
+});
+
+router.post('/postArticle', function(req, res) {
+    var userName = req.body.userName;
+    var html = 'Hello: ' + userName + '.<br>' + '<a href="/">Try again.</a>';
+    var data = req.body;
+    db.addArticle(data)
+    res.send(html);
+});
+
+
+router.get('/latestArticle', function(req, res) {   
+    var render = function(renderdata){
+        res.send(renderdata);
+    } 
+    db.latestArticle(render);    
 });
 
 

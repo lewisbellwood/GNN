@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    app.col-md-12(ng-app='latestArticle')
+        .latestArticleCtrl(ng-controller='latestArticleCtrl')
+            .article.col-md-8( ng-repeat="article in articles" ) {{$index + 1}}
+                h2 {{article.title}}
+                .title {{article.location}}
+                .articlebody {{article.articlebody}}
+                .tags {{article.tags}}
