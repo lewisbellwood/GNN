@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'),
     stylus = require('stylus'),
     nib = require('nib'),
+    mongojs = require("mongojs"),
     http = require("http");
 
 var routes = require('./routes/index');
