@@ -19,16 +19,16 @@ var createArticle = angular.module('createArticle', ['angularFileUpload']);
 createArticle.controller('createArticleCtrl', function($scope, $upload) {
 
     $scope.form = []
-    $scope.$watch('files', function () {
+    $scope.submitForm = function() {
         $scope.upload($scope.files);
-    });
+    };
 
     $scope.upload = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 $upload.upload({
-                    url: '/postArticle',
+                    url: '/uploading',
                     fields: $scope.form,
                     file: file
                 }).progress(function (evt) {
