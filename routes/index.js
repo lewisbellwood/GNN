@@ -62,16 +62,19 @@ router.post('/postArticle', function(req, res) {
     var userName = req.body.userName;
     var html = 'Hello: ' + userName + '.<br>' + '<a href="/">Try again.</a>';
     var data = req.body;
-
-
-
-    fs.writeFile("asfdsf.txt", req.body.mainImage[0], function(err, data) {
-        if (err) {
-            return console.log(err);
-        }
-
-    });
+console.log(req.files.file.path)
     db.addArticle(data)
+    res.send(html);
+});
+
+router.post('/uploading', function(req, res) {
+    var userName = req.body.userName;
+    var html = 'Hello: ' + userName + '.<br>' + '<a href="/">Try again.</a>';
+    var data = req.body;
+
+    
+
+
     res.send(html);
 });
 

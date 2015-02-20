@@ -1,5 +1,22 @@
 extends layout
 
 block content
-    .col-md-12 Log In
+    div(ng-app='fileUpload', ng-controller='MyCtrl')
+      | Username
+      input(type='text', ng-model='username')
+      br
+      br
+      input(type='checkbox', ng-model='multiple')
+      | upload multiple file
+      br
+      br
+      |     watching model:
+      button(ng-file-select='', ng-model='files', ng-multiple='multiple') Select File
+      |     on file change:
+      button(ng-file-select='', ng-file-change='upload($files)', ng-multiple='multiple') Select File
+      |     Drop File:
+      drop-box(ng-file-drop='', ng-file-select='', ng-model='files', drag-over-class='dragover', ng-multiple='true', allow-dir='true', accept='image/*,application/pdf') Drop pdfs or images here or click to upload
+      div(ng-no-file-drop='') File Drag/Drop is not supported for this browser
+      ul
+        li(ng-repeat='f in files', style='font:smaller') {{f.name}}
 
