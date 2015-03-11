@@ -18,22 +18,24 @@ var users = require('./routes/users');
 
 var app = express();
 
-var multer  = require('multer');
+var multipart = require('connect-multiparty');
 
-var done=false;
-
-app.use(multer({ dest: './uploads/',
- rename: function (fieldname, filename) {
-    return filename+Date.now();
-  },
-onFileUploadStart: function (file) {
-  console.log(file.originalname + ' is starting ...')
-},
-onFileUploadComplete: function (file) {
-  console.log(file.fieldname + ' uploaded to  ' + file.path)
-  done=true;
-}
+app.use(multipart({
+    uploadDir: 'uploads'
 }));
+
+// exports.create = function (req, res, next) {
+//     var data = _.pick(req.body, 'type')
+//         , uploadPath = path.normalize(cfg.data + '/uploads')
+//         , file = req.files.file;
+
+//         console.log(file.name); //original name (ie: sunset.png)
+//         console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
+//     console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
+// };
+
+
+
 
 
 // view engine setup

@@ -4,7 +4,7 @@ extends layout
 
 block content
     app.col-md-12(ng-app='createArticle')
-        form.form-horizontal(ng-controller='createArticleCtrl', ng-submit='submitForm()', method="post" , enctype="multipart/form-data" , action="" )
+        form.form-horizontal(ng-controller='createArticleCtrl', ng-submit='submitForm($files)')
           fieldset
             // Form Name
             legend Form Name
@@ -37,7 +37,10 @@ block content
             .form-group
               label.col-md-4.control-label(for='mainImage') Main Image
               .col-md-4
-                input#mainImage.input-file(name='mainImage', file-upload , multiple ,ng-model='form.mainImage', type='file')
+                button(ng-file-select='', ng-model='files', ng-multiple='multiple') Select File
+
+                
+                
             // Text input
             .form-group
               label.col-md-4.control-label(for='tags') Tags
@@ -48,7 +51,7 @@ block content
             .form-group
               label.col-md-4.control-label(for='submit') Submit
               .col-md-4
-                button#submit.btn.btn-primary(name='submit', ngclick='Submit') Submit
+                button#submit.btn.btn-primary(name='submit($files)', ngclick='Submit') Submit
 
 
         
