@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" ng-app="unitedForIran">
+
+<head>
+    <meta charset="utf-8">
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="United for Iran">
+    <meta name="author" content="SitePoint">
+    <!-- css -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/fontello.css?v=1.0">
+    <link rel="stylesheet" href="css/select.min.css?v=1.0">
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="date">
+    <div class="container">
+        <nav>
+            <span class="logo">UNITED FOR IRAN</span>
+            <span class="menu">
+                    <a>JUDGES</a>
+                    <a>PRISONS</a>
+                    <a>PRISONERS</a>
+            </span>
+            <span class="side-menu">UNITED FOR IRAN</span>
+        </nav>
+        <section>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="title">BASIC INFO</span><span class="toggleSection"> xxxx</span>
+                        </div>
+                        <div class="row sectionHide">
+                            <div class="col-sm-6">
+                                <div ng-include="'templates/form.html'"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <ui-select class="col-sm-3 date" on-select="onSelectDate(date)" ng-model="date.day" theme="bootstrap">
+                                        <ui-select-match placeholder="Day">{{$select.selected.text}}</ui-select-match>
+                                        <ui-select-choices repeat="item in days">
+                                            <div ng-bind-html="item.text"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select class="col-sm-3 date" ng-model="date.month" theme="bootstrap">
+                                        <ui-select-match placeholder="Months">{{$select.selected.text}}</ui-select-match>
+                                        <ui-select-choices repeat="item in months">
+                                            <div ng-bind-html="item.text"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select class="col-sm-3 date" ng-model="date.year" theme="bootstrap">
+                                        <ui-select-match placeholder="Years">{{$select.selected.text}}</ui-select-match>
+                                        <ui-select-choices repeat="item in years">
+                                            <div ng-bind-html="item.text"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="row">
+                                    <ui-select class="col-sm-3 date" on-select="onSelectDay_j($select.selected)" ng-model="day_j" theme="bootstrap">
+                                        <ui-select-match placeholder="Day">{{$select.selected.text}}</ui-select-match>
+                                        <ui-select-choices repeat="item in days">
+                                            <div ng-bind-html="item.text"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select class="col-sm-3 date" ng-model="month_j" theme="bootstrap">
+                                        <ui-select-match placeholder="Months_j">{{$select.selected.text}}</ui-select-match>
+                                        <ui-select-choices repeat="item in months_j">
+                                            <div ng-bind-html="item.text"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select class="col-sm-3 date" ng-model="year_j" theme="bootstrap">
+                                        <ui-select-match placeholder="Years">{{$select.selected.text}}</ui-select-match>
+                                        <ui-select-choices repeat="item in years_j">
+                                            <div ng-bind-html="item.text"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                </div>
+                                <input type="submit" ng-click="update($select.search)" value="Save" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="title">BASIC INFO</span><span class="toggleSection"> xxxx</span>
+                        </div>
+                        <div ng-include="'templates/form.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+        </footer>
+        <div class="background"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>
+    <script src="js/select.min.js"></script>
+    <script src="js/jalaali.js"></script>
+    <script src="js/vars.js"></script>
+    <script src="js/base.js"></script>
+</body>
+</body>
+
+</html>
