@@ -23,18 +23,19 @@ UFI.controller('date', ['$scope', '$timeout', function($scope, $timeout) {
     $scope.years = years;
     $scope.months_j = months_j;
     $scope.years_j = years_j;
+    $scope.date = {};
 
 
     // person.selected = {}
 
     $scope.update = function(e) {
         console.log(e)
-      };
+    };
 
 
     $scope.onSelectDay_j = function(e) {
         var date = toGregorian(1000, 1, parseInt(e.text))
-        console.log(date) // this will show the values inside the model, ALWAYS one value behind.
+        console.log($scope.date) // this will show the values inside the model, ALWAYS one value behind.
         $scope.day = {
             text: date.jd.toString()
         };
@@ -42,23 +43,22 @@ UFI.controller('date', ['$scope', '$timeout', function($scope, $timeout) {
     var day = null;
     var month = null;
     var year = null;
-    console.log($scope)
+
     $scope.onSelectDate = function(d, m, y) {
-        console.log(y)
+        year = y;
+        day = d;
+        month = m; 
 
-        if (day == null && d != null) {
+        if (d == null || m == null || y == null ){
 
-            day = d;
-        } else {
-            day = {
-                text: '01'
-            };
-
+            return;
+            
         }
 
 
-        // var date = toJalaali(parseInt(year.text), parseInt(month.text), parseInt(day.text))
-        // console.log(date) // this will show the values inside the model, ALWAYS one value behind.
+
+        var date = toJalaali(parseInt(year.text), parseInt(month.text), parseInt(day.text))
+        console.log(date) // this will show the values inside the model, ALWAYS one value behind.
         // $scope.day_j= {text: date.jd.toString()};
     }
 
